@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/muni-sanjeronimo.ico">
+    <title>Biblioteca Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- PDF.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script>
+        // Configuración de PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="img/muni-sanjeronimo.ico" alt="Logo Biblioteca" class="logo" id="logo">
+                <div class="site-title">Biblioteca Digital - Municipalidad San Jerónimo</div>
+            </div>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" class="search-input" id="search-input" placeholder="Buscar por título, autor o categoría...">
+            <button class="search-button" id="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <main>
+        <div class="books-container" id="books-container">
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="book-details" id="book-details">
+        <button class="close-button" id="close-details">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="details-container" id="details-container">
+          
+        </div>
+    </div>
+
+    <div class="pdf-viewer" id="pdf-viewer">
+        <div class="pdf-toolbar">
+            <button class="close-pdf-button" id="close-pdf">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="pdf-controls">
+                <button id="prev-page"><i class="fas fa-chevron-left"></i></button>
+                <span id="page-info">Página <span id="current-page">0</span> de <span id="total-pages">0</span></span>
+                <button id="next-page"><i class="fas fa-chevron-right"></i></button>
+                <div class="pdf-zoom-controls">
+                    <button id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                    <span id="zoom-level">100%</span>
+                    <button id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                </div>
+            </div>
+            <div class="tts-controls">
+                <button id="tts-play" title="Leer en voz alta">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button id="tts-pause" title="Pausar lectura" disabled>
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button id="tts-stop" title="Detener lectura" disabled>
+                    <i class="fas fa-stop"></i>
+                </button>
+                <select id="tts-voice" title="Seleccionar voz">
+                    <option value="">Cargando voces...</option>
+                </select>
+                <div class="tts-rate-container">
+                    <label for="tts-rate">Velocidad:</label>
+                    <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1">
+                    <span id="tts-rate-value">1x</span>
+                </div>
+            </div>
+        </div>
+        <div class="pdf-container">
+            <canvas id="pdf-canvas"></canvas>
+        </div>
+        <div class="pdf-text-layer" id="pdf-text-layer"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Biblioteca Digital. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="books.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
