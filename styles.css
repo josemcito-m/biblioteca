@@ -1,11 +1,14 @@
 :root {
-    --primary-color: #3a86ff;
-    --secondary-color: #8338ec;
-    --text-color: #333;
-    --bg-color: #f8f9fa;
-    --card-bg: #ffffff;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --primary-color: #00c853;
+    --secondary-color: #00e5ff;
+    --text-color: #1a1a1a;
+    --bg-color: #ffffff;
+    --card-bg: #fefefe;
+    --shadow-color: rgba(0, 200, 83, 0.15);
     --border-color: #e0e0e0;
+    --button-hover-start: #00a74b;
+    --button-hover-end: #00acc1;
+    --search-bg: #b9f8ff; /* Nuevo fondo para search-input en modo claro */
 }
 
 .dark-mode {
@@ -16,7 +19,11 @@
     --card-bg: #1e1e1e;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --border-color: #333;
+    --button-hover-start: #3a0ca3;
+    --button-hover-end: #7209b7;
+    --search-bg: var(--card-bg); /* En modo oscuro se mantiene como fondo de tarjeta */
 }
+
 
 * {
     margin: 0;
@@ -104,25 +111,31 @@ header {
     padding: 1rem 1.5rem;
     border: none;
     font-size: 1rem;
-    background-color: var(--card-bg);
+    background-color: var(--search-bg); /* Usamos la nueva variable */
     color: var(--text-color);
 }
+
 
 .search-input:focus {
     outline: none;
 }
 
-.search-button {
-    background-color: var(--primary-color);
-    color: white;
+.search-button,
+.read-button {
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: #fff;
     border: none;
     padding: 1rem 1.5rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 50px;
+    font-weight: bold;
 }
 
-.search-button:hover {
-    background-color: var(--secondary-color);
+.search-button:hover,
+.read-button:hover {
+    background: linear-gradient(to right, var(--button-hover-start), var(--button-hover-end));
+    transform: translateY(-2px);
 }
 
 main {
@@ -174,12 +187,12 @@ main {
 }
 
 .book-category {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.3rem 0.8rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: #000;
+    padding: 0.4rem 1rem;
     border-radius: 50px;
     font-size: 0.8rem;
+    font-weight: bold;
 }
 
 .book-details {
@@ -283,25 +296,6 @@ main {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     font-size: 0.9rem;
-}
-
-.read-button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.read-button:hover {
-    background-color: var(--secondary-color);
 }
 
 .no-results {
@@ -446,7 +440,9 @@ footer {
     transition: background-color 0.3s;
 }
 
-#prev-page:hover, #next-page:hover, #zoom-in:hover, #zoom-out:hover, #tts-play:hover, #tts-pause:hover, #tts-stop:hover {
+#prev-page:hover, #next-page:hover,
+#zoom-in:hover, #zoom-out:hover,
+#tts-play:hover, #tts-pause:hover, #tts-stop:hover {
     background-color: var(--primary-color);
     color: white;
 }
