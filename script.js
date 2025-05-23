@@ -267,7 +267,7 @@ function zoomOutPdf() {
 
 // Update zoom level display
 function updateZoomLevel() {
-    zoomLevel.textContent = `${Math.round(scale * 100)}%`;
+    zoomLevel.textContent = `${Math.round(scale * 70)}%`;
 }
 
 // Update UI state
